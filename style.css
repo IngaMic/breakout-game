@@ -1,0 +1,86 @@
+body {
+    background-image: url("bckg2.png");
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+#gameBoard {
+    padding: 20px;
+}
+
+#title {
+    margin-top: 10px;
+    font-family: "Press Start 2P", cursive;
+    color: white;
+    text-shadow: 2px 2px 0px #231c24;
+    font-size: 50px;
+    background-color: #373748;
+}
+
+#score {
+    display: inline-block;
+    color: white;
+    font-size: 32px;
+    font-family: "Press Start 2P", cursive;
+    padding-right: 30px;
+}
+
+#lives {
+    display: inline-block;
+    color: white;
+    font-size: 32px;
+    font-family: "Press Start 2P", cursive;
+    padding-left: 30px;
+}
+
+.button {
+    margin-top: -5px;
+    background-color: rgb(114, 141, 161);
+    color: white;
+    font-family: "Press Start 2P", cursive;
+    text-shadow: 2px 2px 0px #231c24;
+    padding: 15px;
+    font-size: 25px;
+    border: 6px white solid;
+    box-shadow: inset -4px -4px 0px 0px #2c5370;
+}
+
+.button:hover {
+    background-color: #2e7039;
+    box-shadow: inset -4px -4px 0px 0px rgb(24, 133, 24);
+}
+
+.button:active {
+    box-shadow: inset 4px 4px 0px 0px rgb(27, 121, 27);
+}
+
+#gameOver {
+    position: fixed;
+    text-align: center;
+    height: 150px;
+    width: 300px;
+    padding-top: 33px;
+    background-color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid red;
+    font-family: "Press Start 2P", cursive;
+    font-size: 40px;
+    color: red;
+    visibility: hidden;
+}
