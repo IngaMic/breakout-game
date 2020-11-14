@@ -32,6 +32,9 @@ body {
 }
 
 #score {
+    position: absolute;
+    top: 45%;
+    left: 5%;
     display: inline-block;
     color: white;
     font-size: 32px;
@@ -40,11 +43,13 @@ body {
 }
 
 #lives {
+    position: absolute;
+    top: 55%;
+    left: 5%;
     display: inline-block;
     color: white;
     font-size: 32px;
     font-family: "Press Start 2P", cursive;
-    padding-left: 30px;
 }
 
 .button {

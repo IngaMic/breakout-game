@@ -43,6 +43,7 @@ const brickPadding = 10;
 const rows = 6;
 const columns = 6;
 let activeBricks = rows * columns;
+// check why active bricks restores to 36 after hit
 // create bricks and set position
 
 const bricks = createBricks(brick, rows, columns);
@@ -57,6 +58,23 @@ for (var row = 0; row < rows; row++) {
 }
 // Functions
 //
+function gameOver() {
+    if (ball.ballPositionY > boardHeight) {
+        if (game.lives > 1) {
+            game.lives -= 1;
+            ball.ballPositionX = (boardWidth - 24) / 2;
+            ball.ballPositionY = boardHeight - 24 * 4;
+            ball.movementX = 5;
+            ball.movementY = 5;
+            paddle.position.x = (boardWidth - 100) / 2;
+            paddle.position.y = boardHeight - 2 * 15;
+        } else {
+            game.lives = 0;
+            game.status = "stopped";
+            showGameOver();
+        }
+    }
+}
 function BallWallCollision() {
     if (ball.ballPositionX + ball.ballRadius > boardWidth) {
         ball.movementX = -ball.movementX;
@@ -65,8 +83,7 @@ function BallWallCollision() {
     } else if (ball.ballPositionY - ball.ballRadius < 0) {
         ball.movementY = -ball.movementY;
     } else if (ball.ballPositionY + ball.ballRadius > boardHeight) {
-        showGameOver();
-        game.status = "stopped";
+        gameOver();
     }
 }
 function ballBrickCollision() {
@@ -88,6 +105,7 @@ function ballBrickCollision() {
                 bricks[column][row].status = "broken";
                 activeBricks -= 1;
                 ball.movementY = -ball.movementY;
+                game.score += 1;
             }
         }
     }
@@ -114,14 +132,19 @@ function movePaddle() {
 }
 
 function respawnBricks() {
+    console.log("activeBricks before", activeBricks); //restoring to original number
     if (activeBricks === 0) {
-        for (var row = 0; row < rows; row++) {
-            for (var column = 0; column < columns; column++) {
-                bricks[column][row].status = "active";
+        setTimeout(() => {
+            for (var row = 0; row < rows; row++) {
+                for (var column = 0; column < columns; column++) {
+                    bricks[column][row].status = "active";
+                }
             }
-        }
+            activeBricks = rows * columns;
+        }, 1000);
     }
-    activeBricks = rows * columns;
+
+    // console.log("activeBricks after", activeBricks);
 }
 function loop() {
     if (game.status === "playing") {
@@ -133,6 +156,7 @@ function loop() {
         respawnBricks();
         movePaddle();
     }
+    gameOver();
 }
 
 function draw() {
@@ -163,6 +187,8 @@ function draw() {
             }
         }
     }
+    drawLives(game.lives);
+    drawScore(game.score);
 }
 
 function onKeyDown(keyCode) {
