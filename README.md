@@ -12,5 +12,5 @@ In Breakout game, a layer of bricks line along the top of the screen and the goa
 
 This is an arcade game, originally developed and published by Atari (released on May 13, 1976). It was conceptualized by Nolan Bushnell and Steve Bristow, influenced by the seminal 1972 Atari arcade game Pong, and built by Steve Wozniak.
 
-Developed in a workshop of Epitech Coding-Club Berlin.
+Project started at a workshop of Epitech Coding-Club Berlin.
 Further information about the workshop can be found in the [Documentation.pdf](https://github.com/JohannesTimmreck/Game_CodingClub/blob/master/Documentation.pdf).  
